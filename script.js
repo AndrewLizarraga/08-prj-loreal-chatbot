@@ -2,6 +2,31 @@
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 const chatWindow = document.getElementById("chatWindow");
+const placeholderText = document.getElementById("placeholderText");
+
+const placeholderTexts = [
+  "Discover your ideal beauty routine...",
+  "Find products for your skin type...",
+  "Ask about skincare, haircare, or routines...",
+  "Need help choosing the right serum?",
+  "Looking for products for dry or damaged hair?",
+  "Build a personalized skincare routine...",
+  "Find the right moisturizer for your skin...",
+  "Explore products for healthy-looking hair...",
+  "Ask for a routine tailored to your needs...",
+  "Get beauty recommendations in seconds..."
+];
+
+function getRandomPlaceholder() {
+  return placeholderTexts[Math.floor(Math.random() * placeholderTexts.length)];
+}
+
+userInput.placeholder = getRandomPlaceholder(); // set initial placeholder
+
+setInterval(() => {
+  userInput.placeholder = getRandomPlaceholder();
+}, 5000);
+
 
 //INtialize chat history
 let messages = [
@@ -16,12 +41,12 @@ Do not answer questions outside of these topics. If a question is unrelated, say
 
 Do Be:
 - Be helpful, concise, and brand-focused.
-- Use Emjios when appropriate to make the conversation more engaging.`}
+- Use Emojis to make the conversation more engaging, emphasizing on products, and understanding of customer needs.`}
 ];
 
 const workerUrl = 'https://loreal-chatbot.alizarraga2349.workers.dev';
 // Set initial message
-chatWindow.textContent = "👋 Hello! How can I help you today?";
+chatWindow.textContent = "How can I assist you today?";
 
 //render the conversation with the latest user message and assistant reply
 function renderConversation(userMessage, replyText) {
