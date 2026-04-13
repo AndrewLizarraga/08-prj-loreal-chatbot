@@ -1,4 +1,4 @@
-// Copy this code into your Cloudflare Worker script
+// Copy for Cloudflare Worker script
 
 export default {
   async fetch(request, env) {
